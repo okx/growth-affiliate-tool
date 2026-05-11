@@ -1,0 +1,7 @@
+# Never commit credentials or runtime state.
+client.json
+pkce.json
+token.json
+auth_url.txt
+__pycache__/
+*.pyc

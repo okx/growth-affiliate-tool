@@ -1,0 +1,16 @@
+# Editor / OS noise
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local test artifacts
+*.log
+*.tmp
+.cache/
+
+# Never commit OAuth tokens or secrets
+token.json
+*.token
+.env
+.env.local
