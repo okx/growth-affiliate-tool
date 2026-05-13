@@ -86,16 +86,11 @@ You will see Claude Code begin the OAuth handshake:
 ![/mcp command kicks off OAuth](../images/01-oauth-command.png)
 
 A browser window opens automatically. If it does not, copy the URL printed in the terminal
-and open it manually.
+and open it manually. Sign in with the OKX account that is enrolled as an Affiliate —
+credentials from a different account will succeed at OAuth but every tool call will then
+return empty data.
 
-### Step 2 — Sign in to your OKX Affiliate account
-
-![OKX login screen](../images/02-okx-login.png)
-
-Use the **same OKX account that is enrolled as an Affiliate** — credentials from a different
-account will succeed at OAuth but every tool call will then return empty data.
-
-### Step 3 — Grant the Live Trading → Read scope
+### Step 2 — Grant the Live Trading → Read scope
 
 On the consent screen:
 
@@ -103,12 +98,20 @@ On the consent screen:
 - ✅ Read-only is on by default — leave it on
 - ❌ **Do NOT enable** Trade, Earn, or Demo trading
 
-![Live Trading scope selection](../images/03-live-trading-scope.png)
+![Live Trading scope selection](../images/02-live-trading-scope.png)
 
 Read-only is the only scope this MCP needs. Granting more is unnecessary and increases the
 blast radius if your token leaks.
 
 Tick *I confirm…* and click **Authorize access**.
+
+### Step 3 — Review and confirm
+
+OKX shows a final review with the AI agent name, your account, and the requested scope:
+
+![Review authorization details](../images/03-review-authorization.png)
+
+Confirm the row reads `Live trading — Read-only` and click **Confirm**.
 
 ### Step 4 — Verify success
 
@@ -116,7 +119,8 @@ Back in your Claude Code terminal:
 
 ![Authentication successful confirmation](../images/04-auth-success.png)
 
-You should see `Authentication successful. Connected to growth-affiliate-pro-tools.`
+You should see `Authentication successful. Connected to growth-affiliate-pro-tools.`, then
+you can immediately call tools like `okx-affiliate-performance-summary` in natural language.
 
 ## Smoke-test the install
 

@@ -13,8 +13,6 @@ The agent calls `okx-affiliate-performance-summary` with the matching `periodTyp
 (`last_30d`, `this_month`, `last_month`) — or with `begin` + `end` Unix-ms timestamps for
 custom ranges like Q1.
 
-![Performance summary example](images/05-example-performance.png)
-
 ## Invitee analysis
 
 > *"List my top 10 invitees by commission this quarter."*
@@ -24,8 +22,6 @@ custom ranges like Q1.
 
 These all hit `okx-affiliate-invitee-list` with different `orderBy` and filter parameters
 (`commissionCategory: DERIVATIVE`, `kycStatus: verified`, etc.).
-
-![Top invitees example](images/06-example-invitee-list.png)
 
 > ℹ️ The schema no longer has `hasDeposit` / `hasTrade` / `countryCode` filters that earlier
 > versions exposed. To find "deposited but never traded" or country-specific cohorts, the

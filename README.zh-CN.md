@@ -4,22 +4,50 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-一个远端 MCP（Model Context Protocol）端点，让 AI agent 能用自然语言查询 OKX Affiliate 后台
-的业绩、邀请人、邀请链接、子联盟等数据，无需手动拼 API。
+OKX 节点 MCP（Model Context Protocol），让 AI agent 能用自然语言查询 OKX 节点后台的
+返佣数据、邀请人、邀请链接、子节点等数据。
+
+<p align="center">
+  <img src="docs/videos/affiliate-mcp-promo.gif" alt="60 秒宣传演示" width="720"/>
+</p>
 
 > **端点：** `https://www.okx.com/api/v1/mcp/growth-affiliate-mcp`
 > **传输：** Streamable HTTP
 > **认证：** OAuth 2.0（每个用户独立授权，由 OKX 托管）
 
-## 接入后可以做什么
+## 使用示例
 
-直接问你的 agent：
-- *「看下我近 30 天的 affiliate 业绩」*
-- *「本季度佣金前 10 的邀请人是谁？」*
-- *「列出我所有邀请链接，按交易者数排序」*
-- *「子联盟 `XYZ` 本月表现如何？」*
+用自然语言提问，agent 自动选工具、调 MCP、用人话回答（以下 UID 与数字仅示意）：
 
-Agent 自动选工具、执行、用人话回答。
+```
+你    ❯ 看下昨日数据
+
+Agent ❯ 📊 佣金 $350（比 7 日均值低 30%）。成交 $3.5M。新邀 6 人。
+        Top 3：UID …A1B2  $91  VIP2
+               UID …C3D4  $50  VIP1
+               UID …E5F6  $28  Regular  ← 该升 VIP1
+        ⚠️ 3 人今日入金 $1.8K 但 0 交易，今天就要救。
+```
+
+```
+你    ❯ 这周该联系谁？
+
+Agent ❯ 🎯 33 个候选，4 个优先级：
+        🔥 新邀明星（加入 <7 天已产出）：     UID …N1P2、…Q3R4
+        🐋 Regular 做着鲸鱼量 → 推 VIP1：     UID …S5T6、…U7V8、…W9X0
+        ⚠️ 大额入金未激活：                    UID …Y1Z2（$10K 闲置 8 天）
+        🆕 KYC 完成但未入金：                  本周 13 个
+```
+
+```
+你    ❯ 哪些鲸鱼在流失？
+
+Agent ❯ ⚠️ 生涯前 50 用户里只有 23 个还在活跃。
+        🔴 已套现：  UID …K1L2（生涯 $104K / 已提走 $10M 入金的 95%）
+        🟡 资金还在：UID …M3N4（生涯 $26K / 94% 仍在平台）← 最易挽回
+        🟠 渐进衰退：UID …P5Q6（生涯 $18K / 近 30 天 0 成交）
+        风险 LTV 合计：$208K（≈ 节点 12 个月佣金的 46%）。
+```
 
 ## 快速开始
 
@@ -46,7 +74,7 @@ Agent 自动选工具、执行、用人话回答。
 
 | Scope                 | 推荐 | 用途                                                  |
 | --------------------- | :--: | ----------------------------------------------------- |
-| `live:read`           | ✅   | 下面所有读取工具（业绩/邀请人/链接/子联盟）           |
+| `live:read`           | ✅   | 下面所有读取工具（业绩/邀请人/链接/子节点）           |
 | `live:trade`          | ❌   | 下单/改单/撤单 —— 本 MCP 不用                         |
 | `live:earn`           | ❌   | Earn 申购 —— 本 MCP 不用                              |
 | `live:asset_transfer` | ❌   | 资金划转 —— 本 MCP 不用                               |
@@ -62,8 +90,8 @@ Agent 自动选工具、执行、用人话回答。
 | 2  | `okx-affiliate-invitee-list`          | 邀请人分页列表，含入金、交易、KYC                  |
 | 3  | `okx-affiliate-invitee-detail`        | 按 UID 查单个邀请人详情                            |
 | 4  | `okx-affiliate-link-list`             | 邀请链接 + 佣金比例 + 累计数据（含 24 小时佣金）   |
-| 5  | `okx-affiliate-sub-affiliate-list`    | MLRS 网络中的子联盟（生涯数据）                    |
-| 6  | `okx-affiliate-co-inviter-list`       | 你被列为共同邀请人的渠道                           |
+| 5  | `okx-affiliate-sub-affiliate-list`    | MLRS 网络中的子节点（生涯数据）                    |
+| 6  | `okx-affiliate-co-inviter-list`       | 助力人分析                                         |
 
 完整参数和返回字段 → [`docs/tools-reference.md`](docs/tools-reference.md)。
 
@@ -77,6 +105,7 @@ Agent 自动选工具、执行、用人话回答。
 | [FAQ](docs/faq.md)                                             | Token 过期、400 错误、scope 不匹配、常见坑          |
 | [Agent 安装引导](INSTALL.md)                                   | 给 AI agent 端到端读的决策树                        |
 | [Skill 索引](skills/README.md)                                 | 给需要自定义 OAuth 处理的 runtime 用的 skill 列表    |
+| [**使用场景**](examples/README.md)                             | 常见分析任务的 skill 包（日报、流失救援、潜力用户等）|
 
 ## 前置条件
 
