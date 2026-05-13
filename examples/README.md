@@ -16,7 +16,6 @@ Inspired by — and structurally compatible with — the
 | [`churn-rescue`](churn-rescue/SKILL.md)                                       | "Which whales are slipping away?" / "find users who stopped trading"  |
 | [`whale-deep-dive`](whale-deep-dive/SKILL.md)                                 | "Pull everything on UID X" / "what's this user's history"             |
 | [`acquisition-trends`](acquisition-trends/SKILL.md)                           | "Analyze my acquisition over the last N months" / "拉新趋势"            |
-| [`tier-upgrade-candidates`](tier-upgrade-candidates/SKILL.md)                 | "Who should I push to VIP1?" / "Regular users doing whale volume"     |
 
 ## How an agent uses these
 

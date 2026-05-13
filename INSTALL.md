@@ -24,18 +24,9 @@ Q1: What runtime are you running inside?
 ├── Codex CLI
 │       → docs/install/codex.md
 │
-├── Hermes
-│       → docs/install/hermes.md
-│
-├── Cursor
-│       → docs/install/cursor.md
-│
-├── OpenClaw  ← OAuth NOT handled natively
-│       → docs/install/openclaw.md
-│         (uses bundled skill at: skills/openclaw-affiliate-mcp/)
-│
-└── Other MCP-compliant client with native OAuth
-        → docs/install/generic.md
+└── OpenClaw  ← OAuth NOT handled natively
+        → docs/install/openclaw.md
+          (uses bundled skill at: skills/openclaw-affiliate-mcp/)
 ```
 
 ## Universal four-step flow (for native-OAuth clients)

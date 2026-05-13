@@ -3,12 +3,6 @@
 An OpenClaw skill that walks an agent through installing and maintaining OAuth credentials
 for the [OKX Affiliate MCP](https://www.okx.com/api/v1/mcp/growth-affiliate-mcp).
 
-> This skill ships as part of the
-> [`zhqingliu-lab/growth-affiliate-tool`](https://github.com/zhqingliu-lab/growth-affiliate-tool)
-> repository. For Claude Code, Codex, Hermes, Cursor, and other clients with native MCP
-> OAuth, see the [parent repo's install guides](../../docs/install/) — those clients do not
-> need this skill.
-
 ## Why this exists
 
 OKX's OAuth server has two non-standard requirements:
@@ -34,13 +28,13 @@ path:
 
 ```bash
 # Option A — clone the parent repo and symlink / copy the skill
-git clone https://github.com/zhqingliu-lab/growth-affiliate-tool /tmp/growth-affiliate-tool
+git clone https://github.com/okx/growth-affiliate-tool /tmp/growth-affiliate-tool
 cp -r /tmp/growth-affiliate-tool/skills/openclaw-affiliate-mcp \
       ~/.openclaw/workspace/skills/okx-affiliate-mcp
 
 # Option B — sparse checkout if you only want the skill
 git clone --filter=blob:none --sparse \
-  https://github.com/zhqingliu-lab/growth-affiliate-tool /tmp/growth-affiliate-tool
+  https://github.com/okx/growth-affiliate-tool /tmp/growth-affiliate-tool
 cd /tmp/growth-affiliate-tool && git sparse-checkout set skills/openclaw-affiliate-mcp
 cp -r skills/openclaw-affiliate-mcp ~/.openclaw/workspace/skills/okx-affiliate-mcp
 ```

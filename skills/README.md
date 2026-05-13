@@ -7,9 +7,8 @@ MCP from runtimes that do not natively handle OKX's OAuth flow.
 | -------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
 | [`openclaw-affiliate-mcp`](openclaw-affiliate-mcp/SKILL.md)    | Walk an OpenClaw agent through OAuth — register / authorize / exchange / refresh — with full handling of OKX's `resource` parameter and DCR quirks | OpenClaw                                      |
 
-> Most clients (Claude Code, Codex, Hermes, Cursor) do **not** need a skill — their MCP
-> runtimes handle OAuth natively. See [`docs/install/`](../docs/install/) for direct install
-> guides.
+> Most clients (Claude Code, Codex) do **not** need a skill — their MCP runtimes handle
+> OAuth natively. See [`docs/install/`](../docs/install/) for direct install guides.
 
 ## Skill format
 
@@ -37,9 +36,9 @@ The OKX OAuth server has two non-standard requirements:
 2. **Non-discovery DCR endpoint** at `/api/v5/mcp/auth/register` — clients that rely solely
    on RFC 7591 discovery will not find it.
 
-Modern MCP clients (Claude Code, Codex, Hermes, Cursor) handle both natively. OpenClaw's
-built-in MCP runtime does not yet, so the skill performs the OAuth flow with a few small
-Python scripts.
+Modern MCP clients (Claude Code, Codex) handle both natively. OpenClaw's built-in MCP
+runtime does not yet, so the skill performs the OAuth flow with a few small Python
+scripts.
 
 ## Adding a new skill
 

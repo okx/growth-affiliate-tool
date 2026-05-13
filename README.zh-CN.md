@@ -57,9 +57,6 @@ Agent ❯ ⚠️ 生涯前 50 用户里只有 23 个还在活跃。
 | ------------------------------- | :------------: | ------------------------------------------------------------ |
 | **Claude Code**（CLI）          | ✅             | [`docs/install/claude-code.md`](docs/install/claude-code.md) |
 | **Codex CLI**                   | ✅             | [`docs/install/codex.md`](docs/install/codex.md)             |
-| **Hermes**                      | ✅             | [`docs/install/hermes.md`](docs/install/hermes.md)           |
-| **Cursor**                      | ✅             | [`docs/install/cursor.md`](docs/install/cursor.md)           |
-| **通用 MCP 客户端**             | ✅             | [`docs/install/generic.md`](docs/install/generic.md)         |
 | **OpenClaw**                    | ❌（用 skill） | [`docs/install/openclaw.md`](docs/install/openclaw.md)       |
 
 > **OpenClaw 用户请注意：** OpenClaw 内建的 MCP runtime 还不支持 OKX 的非标准 OAuth（必填

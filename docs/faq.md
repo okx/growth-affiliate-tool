@@ -28,8 +28,8 @@ without any prompts because OKX still has the grant on file.
 Your MCP client is not adding the required `resource` parameter to OAuth requests
 ([RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707)).
 
-**Fix:** Use a client that handles this natively (Claude Code, Codex, Hermes, Cursor are all
-known to work). For OpenClaw, use the bundled [skill workaround](install/openclaw.md).
+**Fix:** Use a client that handles this natively (Claude Code, Codex are both known to
+work). For OpenClaw, use the bundled [skill workaround](install/openclaw.md).
 
 ### Q: How do I revoke the OAuth grant?
 
@@ -167,7 +167,7 @@ filter the response by the `country` field.
 It depends on the client:
 
 - **Claude Code** — encrypted in `~/.claude/state.json` (or platform keychain on macOS).
-- **Codex / Hermes / Cursor** — see your client's docs; usually a per-app config dir.
+- **Codex** — see your client's docs; usually a per-app config dir.
 - **OpenClaw (via skill)** — `~/.openclaw/data/okx-affiliate-mcp/token.json` in plain JSON.
 
 ### Q: Can I share the token with a teammate?
