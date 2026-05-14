@@ -9,7 +9,7 @@ portal — performance, invitees, links, sub-affiliates — through natural lang
 manual API plumbing.
 
 <p align="center">
-  <img src="docs/videos/affiliate-mcp-promo.gif" alt="60-second affiliate MCP promo" width="720"/>
+  <img src="docs/videos/affiliatemcp-promo-en.gif" alt="60-second affiliate MCP promo" width="720"/>
 </p>
 
 > **Endpoint:** `https://www.okx.com/api/v1/mcp/growth-affiliate-mcp`
@@ -59,13 +59,15 @@ Pick the row that matches your client. Each guide is a single command plus a 4-s
 | ------------------------------- | :--------------: | ------------------------------------------------------------ |
 | **Claude Code** (CLI)           | ✅               | [`docs/install/claude-code.md`](docs/install/claude-code.md) |
 | **Codex CLI**                   | ✅               | [`docs/install/codex.md`](docs/install/codex.md)             |
+| **Hermes Agent**                | ❌ (use skill)   | [`docs/install/hermes.md`](docs/install/hermes.md)           |
 | **OpenClaw**                    | ❌ (use skill)   | [`docs/install/openclaw.md`](docs/install/openclaw.md)       |
 
-> **OpenClaw note:** OpenClaw's built-in MCP runtime does not yet handle OKX's non-standard
-> OAuth requirements (mandatory `resource` parameter and a non-discovery DCR endpoint). Until
-> upstream support lands, OpenClaw users install via the bundled skill at
-> [`skills/openclaw-affiliate-mcp/`](skills/openclaw-affiliate-mcp/) — a drop-in skill pack
-> that walks the agent through the OAuth flow.
+> **Skill-based clients (Hermes, OpenClaw):** their built-in MCP runtimes do not yet handle
+> OKX's non-standard OAuth requirements (mandatory `resource` parameter and a non-discovery
+> DCR endpoint). Until upstream support lands, these clients install via bundled skills:
+> [`skills/hermes-affiliate-mcp/`](skills/hermes-affiliate-mcp/) and
+> [`skills/openclaw-affiliate-mcp/`](skills/openclaw-affiliate-mcp/) — drop-in skill packs
+> that walk the agent through the OAuth flow.
 
 ## Authorization scopes
 

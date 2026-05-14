@@ -5,6 +5,7 @@ MCP from runtimes that do not natively handle OKX's OAuth flow.
 
 | Skill                                                          | Description                                                  | Required for                                  |
 | -------------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| [`hermes-affiliate-mcp`](hermes-affiliate-mcp/SKILL.md)        | Walk a Hermes Agent through OAuth — register / authorize / exchange / refresh — then inject the bearer into `~/.hermes/config.yaml` and keep it fresh via `auto_refresh` | Hermes Agent                                  |
 | [`openclaw-affiliate-mcp`](openclaw-affiliate-mcp/SKILL.md)    | Walk an OpenClaw agent through OAuth — register / authorize / exchange / refresh — with full handling of OKX's `resource` parameter and DCR quirks | OpenClaw                                      |
 
 > Most clients (Claude Code, Codex) do **not** need a skill — their MCP runtimes handle
@@ -36,9 +37,9 @@ The OKX OAuth server has two non-standard requirements:
 2. **Non-discovery DCR endpoint** at `/api/v5/mcp/auth/register` — clients that rely solely
    on RFC 7591 discovery will not find it.
 
-Modern MCP clients (Claude Code, Codex) handle both natively. OpenClaw's built-in MCP
-runtime does not yet, so the skill performs the OAuth flow with a few small Python
-scripts.
+Modern MCP clients (Claude Code, Codex) handle both natively. Hermes Agent and OpenClaw's
+built-in MCP runtimes do not yet, so their skills perform the OAuth flow with a few small
+Python scripts.
 
 ## Adding a new skill
 

@@ -2,34 +2,6 @@
 
 These are real failures we hit during the original integration. Read this first when debugging.
 
-## `403 Cloudflare Error 1010` when calling the MCP endpoint
-
-**Symptom:** Token is valid (JWT decodes cleanly, `aud` matches the MCP URL), but every HTTP call to `https://www.okx.com/api/v1/mcp/growth-affiliate-mcp` returns:
-
-```
-HTTP/1.1 403 Forbidden
-{"type":"...","title":"Error 1010: Access denied",
- "detail":"The site owner has blocked access based on your browser's signature."}
-```
-
-**Cause:** The MCP endpoint sits behind Cloudflare WAF, which blocks requests with non-browser User-Agent strings (e.g. `Python-urllib/3.x`, `curl/8.x`, `httpx/0.x`). The OAuth endpoints (`/api/v5/mcp/auth/*`) are **not** behind this rule — so OAuth succeeds even though the eventual tool call is rejected. That's why the failure surfaces only after you have a working token.
-
-**Fix:** Set a browser User-Agent header on every MCP call:
-
-```python
-headers = {
-    "Authorization": f"Bearer {token}",
-    "Content-Type": "application/json",
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                  "AppleWebKit/537.36 (KHTML, like Gecko) "
-                  "Chrome/120.0.0.0 Safari/537.36",
-}
-```
-
-All other headers (`Authorization`, `Content-Type`, `Accept`) stay unchanged. The same UA needs to be on every MCP call, not just the first one — Cloudflare re-evaluates per request.
-
-This applies to **anything that calls the MCP endpoint directly**: a custom OpenClaw bridge tool, a `curl`/`httpx` test, the skill's own `reference/verify.md` sample, etc. Native-OAuth MCP clients (Claude Code, Codex) already send a browser-like UA, so they are not affected.
-
 ## `invalid_grant: resource does not match`
 
 **Cause:** the `resource` parameter is missing or different between the authorize request and the token request.

@@ -29,7 +29,8 @@ Your MCP client is not adding the required `resource` parameter to OAuth request
 ([RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707)).
 
 **Fix:** Use a client that handles this natively (Claude Code, Codex are both known to
-work). For OpenClaw, use the bundled [skill workaround](install/openclaw.md).
+work). For Hermes Agent and OpenClaw, use the bundled skill workarounds
+([hermes](install/hermes.md), [openclaw](install/openclaw.md)).
 
 ### Q: How do I revoke the OAuth grant?
 
@@ -168,6 +169,8 @@ It depends on the client:
 
 - **Claude Code** — encrypted in `~/.claude/state.json` (or platform keychain on macOS).
 - **Codex** — see your client's docs; usually a per-app config dir.
+- **Hermes Agent (via skill)** — `~/.hermes/data/okx-affiliate-mcp/token.json` in plain JSON,
+  plus a managed `mcp_servers` block in `~/.hermes/config.yaml`.
 - **OpenClaw (via skill)** — `~/.openclaw/data/okx-affiliate-mcp/token.json` in plain JSON.
 
 ### Q: Can I share the token with a teammate?
