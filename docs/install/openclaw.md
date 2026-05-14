@@ -10,7 +10,7 @@ yet handle two of OKX's OAuth quirks:
 2. The **non-discovery DCR (Dynamic Client Registration) endpoint** at
    `/api/v5/mcp/auth/register`.
 
-Most other MCP clients (Claude Code, Codex, Hermes, Cursor) handle these natively. Until
+Most other MCP clients (Claude Code, Codex) handle these natively. Until
 OpenClaw upstream catches up, OpenClaw users install via the **bundled skill** in this repo
 at [`skills/openclaw-affiliate-mcp/`](../../skills/openclaw-affiliate-mcp/) — a few small
 Python scripts plus an agent-readable decision tree.
@@ -31,7 +31,7 @@ All scripts are stdlib-only — no `pip install` required.
 ### Option A — full repo clone (simplest)
 
 ```bash
-git clone https://github.com/zhqingliu-lab/growth-affiliate-tool /tmp/growth-affiliate-tool
+git clone https://github.com/okx/growth-affiliate-tool /tmp/growth-affiliate-tool
 cp -r /tmp/growth-affiliate-tool/skills/openclaw-affiliate-mcp \
       ~/.openclaw/workspace/skills/okx-affiliate-mcp
 ```
@@ -40,7 +40,7 @@ cp -r /tmp/growth-affiliate-tool/skills/openclaw-affiliate-mcp \
 
 ```bash
 git clone --filter=blob:none --sparse \
-  https://github.com/zhqingliu-lab/growth-affiliate-tool /tmp/growth-affiliate-tool
+  https://github.com/okx/growth-affiliate-tool /tmp/growth-affiliate-tool
 cd /tmp/growth-affiliate-tool && git sparse-checkout set skills/openclaw-affiliate-mcp
 cp -r skills/openclaw-affiliate-mcp ~/.openclaw/workspace/skills/okx-affiliate-mcp
 ```
@@ -89,8 +89,7 @@ for the current recommended wiring.
 
 The skill becomes unnecessary the day OpenClaw's mcporter handles the `resource` parameter
 and the custom DCR endpoint. At that point the install path collapses to the standard JSON
-config used by every other client — see [`generic.md`](generic.md). We will update this guide
-when that happens.
+config used by every other native-OAuth client. We will update this guide when that happens.
 
 ## Troubleshooting
 

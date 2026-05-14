@@ -59,9 +59,6 @@ Pick the row that matches your client. Each guide is a single command plus a 4-s
 | ------------------------------- | :--------------: | ------------------------------------------------------------ |
 | **Claude Code** (CLI)           | ✅               | [`docs/install/claude-code.md`](docs/install/claude-code.md) |
 | **Codex CLI**                   | ✅               | [`docs/install/codex.md`](docs/install/codex.md)             |
-| **Hermes**                      | ✅               | [`docs/install/hermes.md`](docs/install/hermes.md)           |
-| **Cursor**                      | ✅               | [`docs/install/cursor.md`](docs/install/cursor.md)           |
-| **Generic MCP client**          | ✅               | [`docs/install/generic.md`](docs/install/generic.md)         |
 | **OpenClaw**                    | ❌ (use skill)   | [`docs/install/openclaw.md`](docs/install/openclaw.md)       |
 
 > **OpenClaw note:** OpenClaw's built-in MCP runtime does not yet handle OKX's non-standard
