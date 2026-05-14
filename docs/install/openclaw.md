@@ -99,6 +99,7 @@ config used by every other native-OAuth client. We will update this guide when t
 | Browser shows blank page after Authorize             | **Expected.** Copy the URL from the address bar         |
 | `refresh.py` returns 4xx                             | Refresh token is dead. Re-run `auth.py` + `exchange.py` (skip `register.py`, `client.json` is still valid) |
 | MCP calls return 401 even right after token refresh  | Restart your OpenClaw session so it picks up new headers |
+| `403 Cloudflare Error 1010` on every MCP call (token is valid) | Your HTTP caller is using a non-browser User-Agent (`Python-urllib`, `curl`, …). Send a Chrome UA on the MCP request. See [`reference/known-issues.md`](../../skills/openclaw-affiliate-mcp/reference/known-issues.md#403-cloudflare-error-1010-when-calling-the-mcp-endpoint) |
 
 For deeper debugging see
 [`skills/openclaw-affiliate-mcp/reference/known-issues.md`](../../skills/openclaw-affiliate-mcp/reference/known-issues.md).

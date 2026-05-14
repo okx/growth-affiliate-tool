@@ -6,8 +6,8 @@ This file is a placeholder for project-specific wiring notes. Update it as integ
 
 ## Likely shapes
 
-- **HTTP MCP entry with bearer header**: configure OpenClaw to call `https://www.okx.com/api/v1/mcp/growth-affiliate-mcp` with `Authorization: Bearer <token>`, where the token is read from `token.json`.
-- **Dedicated bridge tool**: a small wrapper that reads `token.json`, optionally calls `refresh.py` if the token is near expiry, and forwards MCP calls.
+- **HTTP MCP entry with bearer header**: configure OpenClaw to call `https://www.okx.com/api/v1/mcp/growth-affiliate-mcp` with `Authorization: Bearer <token>`, where the token is read from `token.json`. **Also send a browser `User-Agent`** (e.g. a recent Chrome string) — the endpoint is fronted by Cloudflare WAF and returns `403 Error 1010` for non-browser UAs like `Python-urllib` or `curl`. See `known-issues.md`.
+- **Dedicated bridge tool**: a small wrapper that reads `token.json`, optionally calls `refresh.py` if the token is near expiry, and forwards MCP calls. The bridge must inject the browser `User-Agent` header described above on every outbound MCP request.
 - **Cron-driven refresh**: schedule `refresh.py` every ~50 minutes so consumers always see a fresh token.
 
 Pick whichever your OpenClaw build supports. The skill itself is transport-agnostic.

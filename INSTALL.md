@@ -24,6 +24,10 @@ Q1: What runtime are you running inside?
 ├── Codex CLI
 │       → docs/install/codex.md
 │
+├── Hermes Agent  ← OAuth NOT handled natively
+│       → docs/install/hermes.md
+│         (uses bundled skill at: skills/hermes-affiliate-mcp/)
+│
 └── OpenClaw  ← OAuth NOT handled natively
         → docs/install/openclaw.md
           (uses bundled skill at: skills/openclaw-affiliate-mcp/)
@@ -63,7 +67,7 @@ After registering the MCP via the client-specific command/file:
 | `401` after working previously                          | Access token expired (lifetime ≈ 1 h)        | Most clients refresh automatically — re-run the request, or trigger MCP reconnect |
 | `500 system error` from `okx-affiliate-invitee-list`    | `limit` was ≥ 99 (server bug)               | Use `"limit": "95"` or smaller |
 | `okx-affiliate-link-list` filter ignored               | Invalid enum (typo, wrong case)             | Use lowercase exact values: `standard`/`co_inviter`, `normal`/`abnormal` |
-| `invalid_grant: resource does not match`               | Custom OAuth client missing `resource` param | Use a supported client (see Q1) — only OpenClaw is known to need the skill workaround |
+| `invalid_grant: resource does not match`               | Custom OAuth client missing `resource` param | Use a supported client (see Q1) — Hermes and OpenClaw both need the bundled skill workaround |
 
 ## After install succeeds
 

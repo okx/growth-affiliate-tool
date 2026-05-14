@@ -140,6 +140,7 @@ The skill stops at "you have a valid `token.json`". Configuring an HTTP MCP entr
 - **Token endpoint** is `/api/v5/mcp/auth/token`, not the discovery-advertised one in some cases.
 - **Authorize page** uses `flow=code` query param — without it, OKX may serve a different UI.
 - **Scope** — DCR registers a base scope; the access token can be issued with a broader scope (`live:asset_transfer live:earn live:trade live:read`) at exchange time. Our default is `live:read` for safety.
+- **Cloudflare WAF on the MCP endpoint** — actual tool calls go to `https://www.okx.com/api/v1/mcp/growth-affiliate-mcp`, which is fronted by Cloudflare and rejects non-browser User-Agents (`Python-urllib`, `curl`, …) with `403 Error 1010` *even when the token is valid*. Any custom HTTP caller (OpenClaw bridge, verify script, manual curl) **must** send a browser UA. See `reference/known-issues.md`.
 
 See `reference/oauth-endpoints.md` and `reference/known-issues.md` for full details.
 
